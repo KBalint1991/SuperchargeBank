@@ -39,10 +39,28 @@ public class Bank {
 
     public BankTransaction transferTo(Long sourceAccount, Long targetAccount, double amount) throws UserNotFoundException, NotEnoughBalanceException {
         BankTransaction transaction = new BankTransaction(amount);
+        transaction.setSourceID(sourceAccount);
+        transaction.setTargetID(targetAccount);
         BankUser source = getUser(sourceAccount);
         source.withdraw(amount);
         BankUser target = getUser(targetAccount);
         target.deposit(amount);
+        return transaction;
+    }
+
+    public BankTransaction deposit(Long targetAccount, double amount) throws UserNotFoundException {
+        BankTransaction transaction = new BankTransaction(amount);
+        BankUser target = getUser(targetAccount);
+        target.deposit(amount);
+        transaction.setType(BankTransaction.transactionType.DEPOSIT);
+        return transaction;
+    }
+
+    public BankTransaction withdraw(Long targetAccount, double amount) throws UserNotFoundException, NotEnoughBalanceException {
+        BankTransaction transaction = new BankTransaction(amount);
+        BankUser target = getUser(targetAccount);
+        target.withdraw(amount);
+        transaction.setType(BankTransaction.transactionType.WITHDRAW);
         return transaction;
     }
 }

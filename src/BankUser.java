@@ -95,6 +95,10 @@ public class BankUser implements Serializable {
         transactions.add(transaction);
     }
 
+    public void addTransaction(BankTransaction transaction) {
+        transactions.add(transaction);
+    }
+
     public void printHistory() {
         System.out.println(firstName + " " + lastName + " Transaction History:");
         System.out.println("ID\tAmount\tDate\tOperation");

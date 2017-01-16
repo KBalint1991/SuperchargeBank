@@ -39,7 +39,7 @@ public class BankAccount {
 
     public void withdraw(double withdraw) throws NotEnoughBalanceException {
         this.balance -= withdraw;
-        if(this.balance < 0){
+        if (this.balance < 0) {
             this.balance += withdraw;
             throw new NotEnoughBalanceException("You don't have that much money! Your balance is: " + this.balance);
         }

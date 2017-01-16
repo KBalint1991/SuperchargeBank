@@ -9,7 +9,7 @@ public class UserNotFoundException extends Exception {
         super();
     }
 
-    public UserNotFoundException(String message){
+    public UserNotFoundException(String message) {
         super(message);
     }
 }
